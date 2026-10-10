@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Quiz Académique</title>
+<style>
+  /* Layout: single-column reading document, sticky section nav on wide screens, collapsible TOC on phone */
+  :root {
+    --bg: #FAF8F5;
+    --surface: #FFFFFF;
+    --border: #E7E1D8;
+    --ink: #221E18;
+    --ink-soft: #5B5346;
+    --accent: #B5472B;
+    --accent-soft: #F3E4DC;
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1812;
+      --surface: #252019;
+      --border: #3A332A;
+      --ink: #F2EDE5;
+      --ink-soft: #C4BAA9;
+      --accent: #E08860;
+      --accent-soft: #3A2A22;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1812;
+    --surface: #252019;
+    --border: #3A332A;
+    --ink: #F2EDE5;
+    --ink-soft: #C4BAA9;
+    --accent: #E08860;
+    --accent-soft: #3A2A22;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-inline: 16px;
+    padding-block: 32px;
+  }
+  a { color: var(--accent); }
+
+  .page {
+    max-width: 920px;
+    margin-inline: auto;
+  }
+
+  header.hero {
+    padding: 28px 28px 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    margin-bottom: 24px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.1;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 60ch;
+    margin: 0 0 14px;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .meta-pill {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    background: var(--accent-soft);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  nav.toc {
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 16px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 16px;
+    font-size: 13px;
+  }
+  nav.toc .toc-title {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  nav.toc a {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    padding: 4px 0;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 760px) {
+    nav.toc ol { flex-direction: row; flex-wrap: wrap; gap: 8px 14px; }
+  }
+
+  main { min-width: 0; }
+
+  section.card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    padding: 24px 26px;
+    margin-bottom: 18px;
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px);
+  }
+  section.card h2 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section.card .num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  section.card p { margin: 10px 0; color: var(--ink); }
+  section.card p.soft { color: var(--ink-soft); font-size: 14.5px; }
+  section.card ul { margin: 10px 0; padding-left: 20px; }
+  section.card li { margin: 6px 0; }
+  section.card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 18px 0 6px;
+  }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.data-table th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .table-wrap { overflow-x: auto; }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    margin-left: 6px;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+  }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  footer.page-footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 20px 0 8px;
+  }
+
+  code.inline {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 6px;
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+
+<div class="page">
+  <header class="hero">
+    <p class="eyebrow">Quiz Académique — application mobile</p>
+    <h1>Politique de confidentialité</h1>
+    <p class="lede">
+      Ce que l'application collecte, pourquoi, qui peut y accéder, et comment un parent peut
+      consulter ou faire supprimer les données de son enfant à tout moment.
+    </p>
+    <div class="meta-row">
+      <span class="meta-pill">Dernière mise à jour : 10 octobre 2026</span>
+      <span class="meta-pill">Application destinée aux enfants (CP, CE1, CE2) et aux adultes</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Sommaire">
+      <p class="toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#qui">1. Qui exploite l'app</a></li>
+        <li><a href="#donnees">2. Données collectées</a></li>
+        <li><a href="#enfants">3. Protection des enfants</a></li>
+        <li><a href="#micro">4. Microphone</a></li>
+        <li><a href="#partage">5. Qui a accès aux données</a></li>
+        <li><a href="#conservation">6. Durée de conservation</a></li>
+        <li><a href="#droits">7. Vos droits</a></li>
+        <li><a href="#securite">8. Sécurité</a></li>
+        <li><a href="#pub">9. Publicité &amp; paiements</a></li>
+        <li><a href="#contact">10. Contact</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <section class="card" id="qui">
+        <h2><span class="num">01</span> Qui exploite cette application</h2>
+        <p>
+          Quiz Académique est développée et exploitée par un développeur indépendant (éditeur unique,
+          pas de société tierce). Les données sont hébergées chez
+          <strong>Supabase</strong> (base de données et authentification), un sous-traitant technique
+          choisi pour son infrastructure européenne/conforme RGPD — aucune autre société n'a accès aux
+          données des joueurs.
+        </p>
+      </section>
+
+      <section class="card" id="donnees">
+        <h2><span class="num">02</span> Quelles données sont collectées</h2>
+        <p class="soft">
+          Seules les données nécessaires au fonctionnement du jeu sont collectées. Aucune donnée n'est
+          vendue ni utilisée à des fins publicitaires.
+        </p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Donnée</th><th>À quoi elle sert</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Adresse email + mot de passe (si un compte est créé)</td><td>Retrouver sa progression sur un autre appareil. Le mot de passe n'est jamais stocké en clair (géré par Supabase Auth).</td></tr>
+              <tr><td>Pseudo &amp; avatar choisis</td><td>Affichage dans les classements, la liste d'amis et les défis.</td></tr>
+              <tr><td>Progression (leçons, étoiles, niveau, pièces, badges)</td><td>Sauvegarder l'avancement du joueur et le restaurer après réinstallation.</td></tr>
+              <tr><td>Résultats de duels (PvP) et score Élo</td><td>Classement par matière.</td></tr>
+              <tr><td>Code ami &amp; demandes d'amis</td><td>Fonctionnalité "Amis" et défis entre joueurs — aucune messagerie libre, aucun échange de texte entre joueurs.</td></tr>
+              <tr><td>Signalement de question (motif + commentaire facultatif)</td><td>Corriger les questions défectueuses. Envoyé en interne au développeur, jamais public.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="soft">L'application ne demande ni nom complet, ni numéro de téléphone, ni localisation, ni contacts, ni accès aux photos/caméra.</p>
+      </section>
+
+      <section class="card" id="enfants">
+        <h2><span class="num">03</span> Protection des enfants<span class="badge">important</span></h2>
+        <p>
+          Quiz Académique s'adresse en priorité à des enfants de niveau CP à CE2 (environ 6 à 9 ans),
+          mais le contenu s'adresse aussi à des joueurs plus âgés et à des adultes.
+        </p>
+        <h3>Passerelle parentale</h3>
+        <p>
+          Avant toute création de compte (donc avant toute saisie d'email), l'application affiche un
+          petit calcul ("passerelle parentale") qui demande explicitement l'implication d'un parent. Ce
+          n'est pas une vérification d'identité, seulement un frein destiné à éviter qu'un enfant crée
+          seul un compte sans qu'un parent en soit informé.
+        </p>
+        <h3>Pas de contact libre entre enfants</h3>
+        <p>
+          Il n'existe aucune messagerie ni aucun champ de texte libre entre joueurs. Les interactions
+          sociales se limitent à des défis de quiz structurés (pas de chat, pas d'échange de contenu).
+        </p>
+        <h3>Pas de publicité ciblée</h3>
+        <p>
+          Aucun identifiant publicitaire n'est utilisé, aucun profilage comportemental n'est effectué.
+          Voir la section 9 pour l'état actuel et futur de la publicité dans l'application.
+        </p>
+      </section>
+
+      <section class="card" id="micro">
+        <h2><span class="num">04</span> Microphone</h2>
+        <p>
+          Certaines activités (lecture à voix haute) utilisent le microphone pour que l'enfant puisse
+          se réécouter. L'enregistrement reste uniquement en mémoire sur l'appareil : il n'est
+          <strong>ni sauvegardé, ni envoyé sur internet</strong>, et disparaît dès que l'écran est quitté.
+        </p>
+      </section>
+
+      <section class="card" id="partage">
+        <h2><span class="num">05</span> Qui a accès aux données</h2>
+        <ul>
+          <li><strong>Supabase</strong> (hébergement base de données + authentification) — sous-traitant technique uniquement, n'utilise pas les données à ses propres fins.</li>
+          <li><strong>Le développeur</strong> — accès aux signalements de questions et aux données nécessaires à la maintenance du service.</li>
+          <li><strong>Discord</strong> — reçoit uniquement le contenu technique d'un signalement de question (matière, type de question, commentaire) pour permettre une correction rapide ; aucun identifiant de joueur n'est transmis à Discord.</li>
+        </ul>
+        <p>Aucune donnée n'est vendue, louée ou partagée avec un annonceur.</p>
+      </section>
+
+      <section class="card" id="conservation">
+        <h2><span class="num">06</span> Durée de conservation</h2>
+        <p>
+          Les données d'un compte sont conservées tant que le compte existe. Un compte inactif n'est
+          pas supprimé automatiquement, mais peut être supprimé à tout moment par son titulaire
+          (voir section 7). Les sauvegardes locales sur l'appareil restent tant que l'application n'est
+          pas désinstallée.
+        </p>
+      </section>
+
+      <section class="card" id="droits">
+        <h2><span class="num">07</span> Vos droits</h2>
+        <p>Conformément au RGPD, chaque utilisateur (ou le parent d'un enfant utilisateur) peut :</p>
+        <ul>
+          <li>Demander une copie des données associées à son compte.</li>
+          <li>Faire corriger une information inexacte (pseudo, email).</li>
+          <li><strong>Supprimer définitivement son compte</strong> directement depuis l'application : Réglages → Supprimer mon compte. Cette action efface immédiatement et irréversiblement la progression, les amis, le classement et toutes les données liées au compte.</li>
+          <li>Retirer son consentement à tout moment en supprimant le compte.</li>
+        </ul>
+        <div class="callout">
+          <strong>Suppression sans l'application</strong>
+          Si l'application n'est plus installée, la même demande peut être faite par email (voir
+          section 10) en précisant l'adresse email ou le pseudo du compte concerné.
+        </div>
+      </section>
+
+      <section class="card" id="securite">
+        <h2><span class="num">08</span> Sécurité</h2>
+        <p>
+          Les mots de passe sont gérés par Supabase Auth et ne sont jamais stockés en clair. L'accès aux
+          données de chaque joueur est protégé par des règles de sécurité au niveau de la base de
+          données (Row Level Security) : un joueur ne peut lire ni modifier que ses propres données,
+          jamais celles d'un autre joueur.
+        </p>
+      </section>
+
+      <section class="card" id="pub">
+        <h2><span class="num">09</span> Publicité &amp; paiements</h2>
+        <p>
+          À la date de cette politique, l'application <strong>n'affiche aucune publicité</strong> et ne
+          propose aucun achat intégré. Si cela change dans une future mise à jour (ex. publicité gérée
+          par Google AdMob, abonnement sans publicité), cette politique sera mise à jour en conséquence
+          avant la publication de cette mise à jour, et tout traitement publicitaire visant les comptes
+          identifiés comme appartenant à des enfants respectera les règles de Google Play relatives aux
+          familles (annonces non personnalisées, pas de ciblage comportemental).
+        </p>
+      </section>
+
+      <section class="card" id="contact">
+        <h2><span class="num">10</span> Contact</h2>
+        <p>
+          Pour toute question sur cette politique, pour exercer vos droits, ou pour signaler un problème :
+        </p>
+        <p><code class="inline">quizzacademique@gmail.com</code></p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="page-footer">
+    Quiz Académique — cette page peut être mise à jour ; la date en haut de page indique la dernière révision.
+  </footer>
+</div>
+
+</body>
+</html>
